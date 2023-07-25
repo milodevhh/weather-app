@@ -1,28 +1,19 @@
 export default function List({ entries, isGoodWeather, isForGoodWeather }) {
+  console.log(entries);
   return (
-    <div>
-      entries.isForGoodWeather === isGoodWeather ? (
-      <>
-        <h3>The weather is awesome! Go outside - Your activities:</h3>
-        <ul>
-          {entries.map((entry) => (
-            <li key={entry.id}>
-              <p>{entry.name}</p>
-            </li>
-          ))}
-        </ul>
-      </>
-      ) : (
-      <>
-        <h3>Bad weather outside! Here's what you can do now:</h3>
-        <ul>
-          {entries.map((entry) => (
-            <li key={entry.id}>
-              <p>{entry.name}</p>
-            </li>
-          ))}
-        </ul>
-      </>
-    </div>
+    <>
+      <h3>
+        {isGoodWeather
+          ? "The weather is awesome! Go outside - Your activities"
+          : "Bad weather outside! Here's what you can do now:"}
+      </h3>
+      <ul>
+        {entries.map((entry) => (
+          <li key={entry.id}>
+            <p>{entry.name}</p>
+          </li>
+        ))}
+      </ul>
+    </>
   );
 }
