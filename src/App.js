@@ -31,17 +31,17 @@ function App() {
   function handleAddActivity(newEntry) {
     setEntries([...entries, { id: uid(), ...newEntry }]);
   }
+
+  async function startFetching() {
+    const response = await fetch("https://example-apis.vercel.app/api/weather");
+    const weather = await response.json();
+
+    setWeather(weather);
+  }
   useEffect(() => {
-    async function startFetching() {
-      const response = await fetch(
-        "https://example-apis.vercel.app/api/weather"
-      );
-      const weather = await response.json();
-
-      setWeather(weather);
-    }
-
     startFetching();
+    const interval = setInterval(startFetching, 5000);
+    return () => clearInterval(interval);
   }, []);
 
   const entriesId = entries.filter((entry) => entry.id);
