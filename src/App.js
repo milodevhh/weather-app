@@ -9,6 +9,7 @@ function App() {
   const [entries, setEntries] = useLocalStorageState("entries", {
     defaultValue: [],
   });
+  const isGoodWeather = true;
   console.log(entries);
   function handleAddActivity(newEntry) {
     setEntries([...entries, { id: uid(), ...newEntry }]);
@@ -19,7 +20,7 @@ function App() {
         <h1>Weather & Activities App</h1>
       </header>
       <main>
-        <List entries={entries} />
+        <List entries={entries} isGoodWeather={isGoodWeather} />
         <Form onAddActivity={handleAddActivity} />
       </main>
     </div>

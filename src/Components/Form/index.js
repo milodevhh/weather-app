@@ -9,12 +9,13 @@ export default function Form({ onAddActivity }) {
     const data = Object.fromEntries(formData);
     const newEntry = {
       name: data.name,
-      isForGoodWeather: data.isForGoodWeather,
+      isForGoodWeather: event.target.elements.isForGoodWeather.checked,
     };
     onAddActivity(newEntry);
 
     event.target.reset();
     event.target.elements.name.focus();
+    console.log(newEntry);
   }
   return (
     <form onSubmit={handleSubmit}>
