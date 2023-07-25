@@ -1,4 +1,5 @@
 import Button from "../Button";
+import { uid } from "uid";
 
 export default function Form({ onAddActivity }) {
   function handleSubmit(event) {
@@ -10,13 +11,13 @@ export default function Form({ onAddActivity }) {
       name: data.name,
       isForGoodWeather: data.isForGoodWeather,
     };
-
     onAddActivity(newEntry);
 
     event.target.reset();
+    event.target.elements.name.focus();
   }
   return (
-    <form>
+    <form onSubmit={handleSubmit}>
       <h2>Add new Activity</h2>
       <div>
         <div>
@@ -31,11 +32,7 @@ export default function Form({ onAddActivity }) {
             id="isForGoodWeather"
           />
         </div>
-        <div>
-          <Button onAddActivity={handleSubmit} type="submit">
-            Submit
-          </Button>
-        </div>
+        <Button type="submit">Submit</Button>
       </div>
     </form>
   );

@@ -1,19 +1,19 @@
 import { useState } from "react";
 import "./App.css";
 import Form from "./Components/Form";
+import { uid } from "uid";
 
 function App() {
-  const [entries, setEntries] = useState("");
-
-  function onAddActivity(newEntry) {
-    setEntries([...entries, newEntry]);
-    console.log(entries);
+  const [entries, setEntries] = useState([]);
+  console.log(entries);
+  function handleAddActivity(newEntry) {
+    setEntries([...entries, { id: uid(), ...newEntry }]);
   }
   return (
     <div className="App">
       <header></header>
       <main>
-        <Form onAddActivity={onAddActivity} />
+        <Form onAddActivity={handleAddActivity} />
       </main>
     </div>
   );
