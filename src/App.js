@@ -16,6 +16,18 @@ function App() {
     (entry) => entry.isForGoodWeather === isGoodWeather
   );
 
+  function handleDeleteEntry(id) {
+    const deleteEntry = entries.filter((entry) => {
+      if (entry.id === id) {
+        return false;
+      } else {
+        return true;
+      }
+    });
+
+    setEntries(deleteEntry);
+  }
+
   function handleAddActivity(newEntry) {
     setEntries([...entries, { id: uid(), ...newEntry }]);
   }
@@ -31,7 +43,9 @@ function App() {
 
     startFetching();
   }, []);
-  console.log(entries);
+
+  const entriesId = entries.map((entry) => entry.id);
+  console.log(entriesId);
   return (
     <div className="App">
       <header>
@@ -40,7 +54,11 @@ function App() {
         <div>{weather.temperature} </div>
       </header>
       <main>
-        <List entries={goodWeatherActivity} isGoodWeather={isGoodWeather} />
+        <List
+          entries={goodWeatherActivity}
+          isGoodWeather={isGoodWeather}
+          onDelete={() => handleDeleteEntry(entriesId)}
+        />
         <Form onAddActivity={handleAddActivity} />
       </main>
     </div>

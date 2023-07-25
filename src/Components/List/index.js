@@ -1,5 +1,9 @@
-export default function List({ entries, isGoodWeather, isForGoodWeather }) {
-  console.log(entries);
+export default function List({
+  entries,
+  isGoodWeather,
+  isForGoodWeather,
+  onDelete,
+}) {
   return (
     <>
       <h3>
@@ -9,9 +13,12 @@ export default function List({ entries, isGoodWeather, isForGoodWeather }) {
       </h3>
       <ul>
         {entries.map((entry) => (
-          <li key={entry.id}>
-            <p>{entry.name}</p>
-          </li>
+          <>
+            <li key={entry.id}>{entry.name}</li>
+            <button type="button" title="delete entry" onClick={onDelete}>
+              ✕
+            </button>
+          </>
         ))}
       </ul>
     </>
