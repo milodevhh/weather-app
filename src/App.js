@@ -44,20 +44,21 @@ function App() {
     startFetching();
   }, []);
 
-  const entriesId = entries.map((entry) => entry.id);
+  const entriesId = entries.filter((entry) => entry.id);
   console.log(entriesId);
   return (
     <div className="App">
       <header>
         <h1>Weather & Activities App</h1>
-        <span>{weather.condition}</span>
-        <div>{weather.temperature} </div>
+        <span>
+          {weather.condition} {weather.temperature}
+        </span>
       </header>
       <main>
         <List
           entries={goodWeatherActivity}
           isGoodWeather={isGoodWeather}
-          onDelete={() => handleDeleteEntry(entriesId)}
+          onDelete={handleDeleteEntry}
         />
         <Form onAddActivity={handleAddActivity} />
       </main>

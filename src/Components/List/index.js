@@ -1,3 +1,5 @@
+import "./list.css";
+
 export default function List({
   entries,
   isGoodWeather,
@@ -11,13 +13,19 @@ export default function List({
           ? "The weather is awesome! Go outside - Your activities"
           : "Bad weather outside! Here's what you can do now:"}
       </h3>
-      <ul>
+      <ul className="entry-list">
         {entries.map((entry) => (
           <>
-            <li key={entry.id}>{entry.name}</li>
-            <button type="button" title="delete entry" onClick={onDelete}>
-              ✕
-            </button>
+            <li className="entry-list__item" key={entry.id}>
+              {entry.name}
+              <button
+                className="entry-list__item button"
+                type="button"
+                title="delete entry"
+                onClick={() => onDelete(entry.id)}>
+                ✕
+              </button>
+            </li>
           </>
         ))}
       </ul>
