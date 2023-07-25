@@ -11,7 +11,7 @@ function App() {
   }
   return (
     <div className="App">
-      <header></header>
+      <header>Weather & Activities App</header>
       <main>
         <Form onAddActivity={handleAddActivity} />
       </main>
