@@ -1,5 +1,4 @@
 import Button from "../Button";
-import { uid } from "uid";
 
 export default function Form({ onAddActivity }) {
   function handleSubmit(event) {
