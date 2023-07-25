@@ -2,17 +2,24 @@ import { useState } from "react";
 import "./App.css";
 import Form from "./Components/Form";
 import { uid } from "uid";
+import List from "./Components/List";
+import useLocalStorageState from "use-local-storage-state";
 
 function App() {
-  const [entries, setEntries] = useState([]);
+  const [entries, setEntries] = useLocalStorageState("entries", {
+    defaultValue: [],
+  });
   console.log(entries);
   function handleAddActivity(newEntry) {
     setEntries([...entries, { id: uid(), ...newEntry }]);
   }
   return (
     <div className="App">
-      <header>Weather & Activities App</header>
+      <header>
+        <h1>Weather & Activities App</h1>
+      </header>
       <main>
+        <List entries={entries} />
         <Form onAddActivity={handleAddActivity} />
       </main>
     </div>
