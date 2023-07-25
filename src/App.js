@@ -36,6 +36,8 @@ function App() {
     <div className="App">
       <header>
         <h1>Weather & Activities App</h1>
+        <span>{weather.condition}</span>
+        <div>{weather.temperature} </div>
       </header>
       <main>
         <List entries={goodWeatherActivity} isGoodWeather={isGoodWeather} />
